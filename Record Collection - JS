@@ -19,7 +19,7 @@ var collection = {
     },
     "1245": {
       "artist": "Robert Palmer",
-      "tracks": [ ]
+      "tracks": []
     },
     "5439": {
       "album": "ABBA Gold"
@@ -31,24 +31,21 @@ var collectionCopy = JSON.parse(JSON.stringify(collection));
 // Only change code below this line
 function updateRecords(id, prop, value) {
   var collectionLength = collection.length;
-  for (i=0; i < collectionLength; i++){
     if (prop !== "tracks" && value !== ""){
-      collection.i[prop] = value;
+      collection[id][prop] = value;
     }
-    if (prop == "tracks"){
-      if (!collection.i.hasOwnProperty(prop)){
-        collection.i.tracks = [];
+    if (prop === "tracks"){
+      if (!collection[id].hasOwnProperty(prop)){
+        collection[id].tracks = [];
       }
-      collection.i.tracks.push(value);
+      collection[id].tracks.push(value);
     }
-    if (value === ""){
-      delete collection.i[prop];
+    if (!value){
+      delete collection[id][prop];
     }
-  }
   
   return collection;
 }
-
 // Alter values below to test your code
 updateRecords(5439, "artist", "ABBA");
 
