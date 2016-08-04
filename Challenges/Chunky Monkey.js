@@ -1,18 +1,14 @@
 
 function chunkArrayInGroups(arr, size) {
   // Break it up.
-  var arrLength = arr.length;
-  var groupedArr = [];
-  var innerArr = new Array();
-  for (var i=0; i<arrLength; i++){
-    while (innerArr.length < size){
-      for (var j=0; j<size; j++){
-        innerArr.push(arr[i++]);
-      }
-      groupedArr.push(innerArr);
-    }
+  var arrLength = (arr.length) - size;
+  var someArr = new Array();
+  for (var i=0; i < arrLength; i++){
+    var splicedIt = arr.splice(0, size);
+    someArr.push(splicedIt);
   }
-  return groupedArr;
+  //someArr.pop();
+  return someArr;
 }
 
-chunkArrayInGroups(["a", "b", "c", "d"], 2);
+chunkArrayInGroups([0, 1, 2, 3, 4, 5], 3);
