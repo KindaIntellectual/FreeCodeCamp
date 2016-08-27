@@ -1,0 +1,39 @@
+function rot13(str) { // LBH QVQ VG!
+  var newStr = [];
+  for (var i=0; i<str.length; i++ ){
+    var codedStr = str.charCodeAt(i);
+    if (codedStr < 65 || codedStr > 90 ){
+      newStr.push(String.fromCharCode(codedStr));
+    }
+    else if (codedStr >=78){newStr.push(String.fromCharCode(codedStr-13));}
+    else {newStr.push(String.fromCharCode(codedStr+13));}
+
+  }
+  return newStr.join('');
+}
+
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
+
+-----------------------------------------------------------
+function rot13(str){
+  return str.replace(/[A-Z]/g, function(a){return String.fromCharCode(65+(a.charCodeAt(0)-52)%26);});
+}
+
+rot13("SERR PBQR PNZC");
+--------------------------------------------------------------
+function rot13(str) { // LBH QVQ VG!
+  return Array.prototype
+    .map.call(str, function(char) {
+      x = char.charCodeAt(0);
+    if (x < 65 || x > 90) {
+        return String.fromCharCode(x);  
+      }
+    else if (x < 78) {
+        return String.fromCharCode(x + 13);
+      }   
+      return String.fromCharCode(x - 13);
+    }).join('');  
+  }
+// Change the inputs below to test
+console.log(rot13("SERR PBQR PNZC"));
